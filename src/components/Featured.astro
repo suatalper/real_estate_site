@@ -35,7 +35,7 @@ const properties = [
             <p class="text-text-muted max-w-2xl mx-auto text-lg">Sizin için seçtiğimiz en popüler ticari gayrimenkul fırsatlarını inceleyin.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 scroll-hidden opacity-0 translate-y-4 transition-all duration-700">
             {properties.map(property => (
                 <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group overflow-hidden border border-gray-100 flex flex-col h-full">
                     <div class="relative h-64 overflow-hidden">

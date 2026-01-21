@@ -20,5 +20,28 @@ const { title } = Astro.props;
 		<main class="grow">
 			<slot />
 		</main>
+        <script>
+            // Simple Scroll Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                        entry.target.classList.remove('opacity-0', 'translate-y-4'); // Remove initial hidden state
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const hiddenElements = document.querySelectorAll('.scroll-hidden');
+                hiddenElements.forEach((el) => observer.observe(el));
+            });
+        </script>
 	</body>
 </html>
