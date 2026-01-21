@@ -6,14 +6,19 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content="Profesyonel emlak çözümleri ile hayalinizdeki evi bulun." />
 		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-background text-text-main min-h-screen flex flex-col">
 		<Navbar />
-		<slot />
+		<main class="grow">
+			<slot />
+		</main>
 	</body>
 </html>

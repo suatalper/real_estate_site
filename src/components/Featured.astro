@@ -1,12 +1,92 @@
-<section class=" py-20 bg-gray-50">
-    <div class="max-w-7xl max-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-6">Öne Çıkan İlanlar</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-blue-500 h-64">Kutu 1</div> 
-                <div class="bg-blue-500 h-64">Kutu 2</div>
-                <div class="bg-blue-500 h-64">Kutu 3</div>
-            </div>
+---
+const properties = [
+  {
+    title: 'İstoç Ana Cadde Üzeri Dükkan',
+    location: 'İstoç Ticaret Merkezi, 4. Ada',
+    price: '12.500.000 ₺',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+    features: ['120 m²', '3 Bölüm', 'Kombi'],
+    type: 'Satılık'
+  },
+  {
+    title: '2. Katta Ofis Katı',
+    location: 'İstoç Plaza Yanı',
+    price: '45.000 ₺ / Ay',
+    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
+    features: ['85 m²', '2+1', 'Merkezi'],
+    type: 'Kiralık'
+  },
+  {
+    title: 'Köşe Başı Geniş Mağaza',
+    location: '24. Ada Köşe Konum',
+    price: '28.000.000 ₺',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
+    features: ['250 m²', 'Çift Cephe', 'Depolu'],
+    type: 'Satılık'
+  }
+];
+---
+
+<section id="featured" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="text-secondary font-bold tracking-wider uppercase text-sm">Fırsatlar</span>
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-primary mt-2 mb-4">Öne Çıkan İlanlar</h2>
+            <p class="text-text-muted max-w-2xl mx-auto text-lg">Sizin için seçtiğimiz en popüler ticari gayrimenkul fırsatlarını inceleyin.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {properties.map(property => (
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group overflow-hidden border border-gray-100 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img 
+                            src={property.image} 
+                            alt={property.title} 
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        >
+                        <div class="absolute top-4 left-4 bg-primary/90 text-white text-xs font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm uppercase tracking-wide">
+                            {property.type}
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-white/95 text-primary font-bold px-4 py-2 rounded-lg shadow-lg">
+                            {property.price}
+                        </div>
+                    </div>
+                    
+                    <div class="p-8 flex flex-col grow">
+                        <h3 class="text-xl font-bold text-primary mb-2 line-clamp-1">{property.title}</h3>
+                        <p class="text-text-muted flex items-center gap-2 text-sm mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                            {property.location}
+                        </p>
+                        
+                        <div class="flex items-center gap-4 mb-8 pt-6 border-t border-gray-100 mt-auto">
+                            {property.features.map(feature => (
+                                <span class="text-xs font-medium text-text-muted bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+                                    {feature}
+                                </span>
+                            ))}
+                        </div>
+                        
+                        <a href="/property/1" class="w-full flex items-center justify-center gap-2 bg-primary/5 text-primary font-bold py-3.5 rounded-xl hover:bg-primary hover:text-white transition-all duration-300 group-hover:shadow-lg">
+                            İncele
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+        <div class="text-center mt-16">
+            <a href="#" class="inline-flex items-center gap-2 bg-white text-primary border border-primary/20 hover:border-primary font-bold py-3 px-8 rounded-full transition-all hover:-translate-y-1 shadow-sm hover:shadow-md">
+                Tüm İlanları Gör
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </section>

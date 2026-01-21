@@ -1,12 +1,79 @@
-<nav class="sticky top-0 z-50 bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4">
+---
+const navLinks = [
+  { name: 'Ana Sayfa', href: '#' },
+  { name: 'Dükkan', href: '#featured' },
+  { name: 'Yatırımlık', href: '#featured' },
+  { name: 'Kiralık', href: '#featured' },
+];
+---
+
+<nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-background/80 backdrop-blur-md shadow-sm"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-            <div class="text-2xl font-bold text-gray-900">Site Emlak</div>
-            <div class="hidden md:flex gap-8">
-                <a href="#">Ana Sayfa</a>
-                <a href="#">İlan Verin</a>
+            <!-- Logo -->
+            <div class="shrink-0 flex items-center gap-2 cursor-pointer">
+                <div class="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
+                <span class="text-2xl font-heading font-bold text-primary tracking-tight">Site Emlak</span>
             </div>
-            <div class="hidden md:flex bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">Bize Ulaşın</div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                {navLinks.map(link => (
+                    <a href={link.href} class="text-text-main hover:text-secondary font-medium transition-colors relative group">
+                        {link.name}
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                    </a>
+                ))}
+                <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-primary-light transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                    İletişime Geç
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-text-main hover:text-primary focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-gray-100 shadow-xl">
+        <div class="px-4 py-6 space-y-4">
+            {navLinks.map(link => (
+                <a href={link.href} class="block text-lg font-medium text-text-main hover:text-secondary px-2 py-1">{link.name}</a>
+            ))}
+            <a href="#contact" class="block w-full text-center bg-primary text-white px-6 py-3 rounded-xl font-medium mt-4">
+                İletişime Geç
+            </a>
         </div>
     </div>
 </nav>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu?.classList.add('hidden');
+        });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            navbar?.classList.add('shadow-md');
+        } else {
+            navbar?.classList.remove('shadow-md');
+        }
+    });
+</script>
