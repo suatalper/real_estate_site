@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-heading: "Outfit", sans-serif;
+  --font-sans: "Roboto Condensed", sans-serif;
+  --font-heading: "Oswald", sans-serif;
 
-  /* Premium Dark Theme Palette */
-  --color-primary: #ffffff; /* Text is now white mostly */
-  --color-primary-light: #e2e8f0;
+  /* Power & Dynamic Theme Palette */
+  --color-primary: #b91c1c; /* Red 700 - Brick Red (Action) */
+  --color-primary-light: #dc2626; /* Red 600 */
 
-  --color-secondary: #3b82f6; /* Bright blue for accents */
-  --color-accent: #f59e0b;
+  --color-secondary: #dc2626; /* Red 600 - Secondary is also Red for this theme */
+  --color-accent: #991b1b; /* Red 800 */
 
-  --color-surface: #0f172a; /* Slate 900 */
-  --color-background: #020617; /* Slate 950 - Very dark */
+  --color-surface: #ffffff; /* White */
+  --color-background: #f3f4f6; /* Gray 100 - Cold/Professional Background */
 
-  --color-text-main: #f1f5f9; /* Slate 100 */
-  --color-text-muted: #94a3b8; /* Slate 400 */
+  --color-text-main: #111827; /* Gray 900 - Anthracite */
+  --color-text-muted: #4b5563; /* Gray 600 */
 }
 
 @layer base {
@@ -32,7 +32,7 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-bold text-white;
+    @apply font-heading font-bold uppercase tracking-tight text-text-main;
   }
 
   body {

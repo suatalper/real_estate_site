@@ -8,31 +8,31 @@ const navLinks = [
 ---
 
 <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-    <div class="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/20"></div>
+    <div class="absolute inset-0 bg-gray-900/95 backdrop-blur-md border-b-2 border-primary shadow-2xl"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <!-- Logo -->
             <div class="shrink-0 flex items-center gap-2 cursor-pointer">
-                <div class="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
-                <span class="text-2xl font-heading font-bold text-primary tracking-tight">Site Emlak</span>
+                <div class="w-10 h-10 bg-primary rounded-none flex items-center justify-center text-white font-bold text-xl">S</div>
+                <span class="text-2xl font-heading font-bold text-white tracking-tighter uppercase">Site Emlak</span>
             </div>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8">
                 {navLinks.map(link => (
-                    <a href={link.href} class="text-gray-300 hover:text-white font-medium transition-colors relative group">
+                    <a href={link.href} class="text-gray-300 hover:text-white font-bold uppercase tracking-wider transition-colors relative group text-sm">
                         {link.name}
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full box-shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
                     </a>
                 ))}
-                <a href="#contact" class="bg-white text-black px-6 py-2.5 rounded-full font-bold hover:bg-gray-200 transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <a href="#contact" class="bg-primary text-white px-8 py-3 rounded-none font-bold uppercase tracking-widest hover:bg-red-800 transition-all transform hover:-translate-y-0.5 shadow-md text-sm border border-transparent hover:border-red-400">
                     İletişime Geç
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-text-main hover:text-primary focus:outline-none">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-primary focus:outline-none">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
@@ -40,12 +40,12 @@ const navLinks = [
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-white/10 shadow-2xl">
-        <div class="px-4 py-6 space-y-4">
+    <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-gray-900 border-b-2 border-primary shadow-2xl">
+        <div class="px-4 py-8 space-y-4">
             {navLinks.map(link => (
-                <a href={link.href} class="block text-lg font-medium text-gray-300 hover:text-white px-2 py-1">{link.name}</a>
+                <a href={link.href} class="block text-xl font-bold uppercase tracking-wider text-gray-300 hover:text-primary px-2 py-2 border-b border-gray-800">{link.name}</a>
             ))}
-            <a href="#contact" class="block w-full text-center bg-white text-black px-6 py-3 rounded-xl font-bold mt-4 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <a href="#contact" class="block w-full text-center bg-primary text-white px-6 py-4 rounded-none font-bold uppercase tracking-widest mt-6 shadow-md hover:bg-red-800">
                 İletişime Geç
             </a>
         </div>
